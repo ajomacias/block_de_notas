@@ -13,5 +13,4 @@ controller.inicio = (req, res, next) => {
    })
 }
 
-
 module.exports = controller;
