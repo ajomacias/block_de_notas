@@ -25,7 +25,4 @@ res.send("ver_nota")
 });
 
 
-
-
-
 module.exports = router;

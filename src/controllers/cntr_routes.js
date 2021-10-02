@@ -3,16 +3,14 @@ const tableNotes = require('../models/notas');
 
 const controller = {};
 
-controller.inicio = (req, res,next) => {
+controller.inicio = (req, res, next) => {
    tableUsers.create({
-      name_user:"manuel",
-      clave_user:"123"
+      name_user: "manuel",
+      clave_user: "123"
    }
    ).then((users) => {
-       res.json(users);
+      res.json(users);
    })
-
-   
 }
 
 
