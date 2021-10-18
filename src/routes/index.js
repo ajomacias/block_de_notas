@@ -1,16 +1,28 @@
 const express = require('express');
-const router = express.Router();
+var router = express.Router();
 const controller = require('../controllers/cntr_routes');
+var bodyParser = require('body-parser');
+var app = express();
+// parse application/x-www-form-urlencoded
+router.use(bodyParser.urlencoded({ extended: true }))
+ 
+// parse application/json
+router.use(bodyParser.json())
 
-router.get('/', controller.inicio);
+router.get('/',(req,res,next)=>{
+    res.render("index.ejs");
+});
 
 router.get('/login', (req, res, next) => {
-    res.send("HOLAHOLAHOLA");
+    res.render('login.ejs');
 });
 
-router.get('/buscar', (req, res, next) => {
-    res.send("HOLAHOLAHOLA");
+router.get('/registro', (req, res, next) => {
+    res.render('registro.ejs');
 });
+
+
+router.post('/login',controller.loguearse );
 
 router.get('/notas', (req, res, next) => {
     res.send("HOLAHOLAHOLA");
