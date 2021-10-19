@@ -2,10 +2,7 @@ const tableUsers = require('../models/users');
 const tableNotes = require('../models/notas');
 const { findOne, findAll } = require('../models/users');
 const { Op } = require("sequelize");
-
-
 const controller = {};
-
 
 controller.loguearse = async (req, res, next) => {
   const usuario = req.body.usuario;
