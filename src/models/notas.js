@@ -7,6 +7,10 @@ note.init({
         type: DataTypes.STRING,
         allowNull: false,
     },
+    userId:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
     text: {
         type: DataTypes.TEXT,
         allowNull: false,

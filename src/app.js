@@ -5,7 +5,13 @@ const app = express();
 const path = require('path');
 const PORT = process.env.PORT || '4000';
 const bodyParser = require("body-parser");
+var session = require('express-session')
 
+app.use(session({
+    secret:"notas_anma",
+    resave:false,
+    saveUninitialized:false
+  }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

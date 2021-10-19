@@ -22,19 +22,18 @@ router.get('/registro', (req, res, next) => {
 });
 
 
-router.post('/login',controller.loguearse );
 
 router.get('/notas', (req, res, next) => {
     res.send("HOLAHOLAHOLA");
 });
 
-router.get('/agregar_nota', (req, res, next) => {
-    res.send("HOLAHOLAHOLA");
-})
+router.get('/agregar_nota', controller.setNote);
 
 router.get('/ver_nota', (req, res) => {
 res.send("ver_nota")
 });
 
+router.post('/login',controller.loguearse );
+router.post('/registrarse',controller.registrarse);
 
 module.exports = router;
