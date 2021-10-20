@@ -35,17 +35,11 @@ controller.registrarse = async (req, res, next) => {   //REGISTRARSE
   const usuario = req.body.usuario;
   const calave = req.body.password;
   const data = await tableUsers.findOne({
-    attributes: ['id', 'name_user', 'clave_user'],
-    where: {
-      [Op.or]: [
-        { name_user: `${usuario}` },
-      ]
-    }
+    where: { name_user: `${usuario}` },
   });
   if (data) {
     return res.send("Este nombre de usuario ya existe");
   }
-
   const newUser = await tableUsers.create({
     name_user: usuario,
     clave_user: calave,
@@ -62,7 +56,7 @@ controller.registrarse = async (req, res, next) => {   //REGISTRARSE
 
 controller.setNote = async (req, res, next) => {    //INGRESAR NOTA
   if (!req.session?.loggedin) {
-    return  res.redirect('/noLog');
+    return res.redirect('/noLog');
   }
   const titulo = req.body.titulo;
   const cuerpo = req.body.cuerpo;
@@ -87,7 +81,7 @@ controller.setNote = async (req, res, next) => {    //INGRESAR NOTA
 
 controller.deleteNote = async (req, res, next) => {  //ELIMINAR NOTA
   if (!req.session?.loggedin) {
-    return  res.redirect('/noLog');
+    return res.redirect('/noLog');
   }
   const id = req.params.id;
   await tableNotes.destroy({
@@ -100,7 +94,7 @@ controller.deleteNote = async (req, res, next) => {  //ELIMINAR NOTA
 
 controller.editNote = async (req, res, next) => {  //EDITAR NOTA
   if (!req.session?.loggedin) {
-    return  res.redirect('/noLog');
+    return res.redirect('/noLog');
   }
   const idUser = req.session.id_user;
   const idNote = req.body.id;
@@ -124,7 +118,7 @@ controller.editNote = async (req, res, next) => {  //EDITAR NOTA
 
 controller.changePassword = async (req, res, next) => {      //CAMBIAR CONTRASEÑA
   if (!req.session?.loggedin) {
-    return  res.redirect('/noLog');
+    return res.redirect('/noLog');
   }
   const id = req.session.id_user;
   const newPassword = req.body.password;
