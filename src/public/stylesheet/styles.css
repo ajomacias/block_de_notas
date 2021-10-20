@@ -1,10 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
 *{
     box-sizing: border-box;
 }
-
+a{
+    color: azure;
+    text-decoration: none;
+}
 body{
-    background-color: rgb(7, 7, 17);
+    background-color: rgb(190, 190, 197);
     margin: 0;
+}
+.pages{
+    background-color: rgb(190, 190, 197);
 }
 /*login*/
 .complete{
@@ -13,12 +20,12 @@ body{
     flex-wrap: wrap;
     justify-content: center;
     padding-top: 90px;
+    font-family: 'Play', sans-serif;
 }
 .form-login{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: beige;
     width: 30%;
-    background-color: rgb(17, 14, 68);
+    background-color: rgb(20, 20, 24);
     height: 440px;
     box-shadow: 10px 5px 5px rgb(56, 56, 56);
     border: 1px groove gray;
@@ -34,7 +41,7 @@ body{
 }
 
 .form-login .botton-login{
-    background: rgb(11, 21, 163);
+    background: rgb(65, 65, 67);
     cursor: pointer;
     margin-top: 40px;
     height: 47px;
@@ -70,13 +77,16 @@ body{
 
 /*hover*/
 .form-login .botton-login:hover{
-    background: rgb(16, 41, 181);
+    background: rgb(96, 96, 99);
     }
 .form-login input:hover{
     
     background-color: rgb(255, 249, 249);
    
  }
+ a:hover{
+    color: rgb(148, 148, 148);
+}
 
 
 /*@media (max-width: 600px)*/
@@ -98,13 +108,70 @@ body{
 /*header*/
 .div-complete-pages{
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    padding: 0;
+    font-family: 'Play', sans-serif;
 }
 
 .nav{
     width: 100%;
-    height: fit-content;
-    background-color: blue;
+    background-color: rgb(20, 20, 24);
+    display: flex;
     margin: 0;
+    height: 80px;
+    padding-top: 14px;
+    color: azure;
+    padding-right: 0;
 }
+.img-nav{
+    width: 40px;
+    padding: 0; 
+}
+.li-nav-logo {
+    display: block;
+
+}
+a .h2-nav{
+    color: azure;
+    margin-top: 10px;
+    display: inline-block;
+
+}
+.div-items{
+    display: inline-block;
+    margin-left: auto;
+
+}
+.li-nav-items{
+    display: inline-block;
+    margin-top: 13px;
+    margin-right:130px ;
+}
+.li-nav-items a{
+    color: azure;
+}
+.li-nav-items a:hover{
+    text-decoration: none;
+    color: rgb(175, 175, 175);
+}
+
+/*NO LOGEADO*/
+.not-logger{
+    width: fit-content;
+    flex-direction: column;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    font-family: 'Play', sans-serif;
+    
+}
+.not-logger h1{
+    margin: 0;
+    font-size: 200px;
+}
+.not-logger a{
+    text-decoration: none;
+}
+.not-logger a:hover{
+    text-decoration:underline;
+    color: rgb(148, 148, 148);
+}
+

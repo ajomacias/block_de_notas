@@ -1,7 +1,6 @@
 const tableUsers = require('../models/users');
 const tableNotes = require('../models/notas');
-const { findOne, findAll } = require('../models/users');
-const { Op, where } = require("sequelize");
+const { Op } = require("sequelize");
 const controller = {};
 
 /*_________________________________________________________________________*/
@@ -63,7 +62,7 @@ controller.registrarse = async (req, res, next) => {   //REGISTRARSE
 
 controller.setNote = async (req, res, next) => {    //INGRESAR NOTA
   if (!req.session?.loggedin) {
-    return res.send("Primero debe logearse")
+    return  res.redirect('/noLog');
   }
   const titulo = req.body.titulo;
   const cuerpo = req.body.cuerpo;
@@ -88,7 +87,7 @@ controller.setNote = async (req, res, next) => {    //INGRESAR NOTA
 
 controller.deleteNote = async (req, res, next) => {  //ELIMINAR NOTA
   if (!req.session?.loggedin) {
-    return res.send("debe logearse primero");
+    return  res.redirect('/noLog');
   }
   const id = req.params.id;
   await tableNotes.destroy({
@@ -100,8 +99,8 @@ controller.deleteNote = async (req, res, next) => {  //ELIMINAR NOTA
 /*_________________________________________________________________________*/
 
 controller.editNote = async (req, res, next) => {  //EDITAR NOTA
-  if (!req.session.loggedin) {
-    return res.send("inicie sesion");
+  if (!req.session?.loggedin) {
+    return  res.redirect('/noLog');
   }
   const idUser = req.session.id_user;
   const idNote = req.body.id;
@@ -111,7 +110,6 @@ controller.editNote = async (req, res, next) => {  //EDITAR NOTA
 
   await tableNotes.updateNote({
     title: titleForm,
-    userId: idUser,
     text: textForm,
     importance: important
   }, {
@@ -124,12 +122,19 @@ controller.editNote = async (req, res, next) => {  //EDITAR NOTA
 
 /*_________________________________________________________________________*/
 
-controller.changePassword = (req, res, next) => {      //CAMBIAR CONTRASEÑA
+controller.changePassword = async (req, res, next) => {      //CAMBIAR CONTRASEÑA
   if (!req.session?.loggedin) {
-    return res.send("debe iniciar sesion");
+    return  res.redirect('/noLog');
   }
   const id = req.session.id_user;
-  const password = req.body.password;
+  const newPassword = req.body.password;
+  await tableUsers.update(
+    { clave_user: newPassword }, {
+    where: {
+      id: `${id}`
+    }
+  })
+  res.send("se a cambiado la contraseña");
 
 }
 
