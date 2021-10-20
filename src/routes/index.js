@@ -22,7 +22,6 @@ router.get('/registro', (req, res, next) => {
 });
 
 
-
 router.get('/notas', (req, res, next) => {
     res.send("HOLAHOLAHOLA");
 });
@@ -33,6 +32,10 @@ router.get('/ver_nota', (req, res) => {
 res.send("ver_nota")
 });
 
+router.post('/deleteNote/:id', controller.deleteNote );
+
+router.post('/deleteNote/:id', controller.deleteNote );
+router.post('/editNote', controller.editNote );
 router.post('/login',controller.loguearse );
 router.post('/registrarse',controller.registrarse);
 
